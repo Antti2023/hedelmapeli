@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hedelmäpeli</title>
+    <link rel="stylesheet" href="hedelmapeli.css">
+</head>
+<body>
+    <div class="container1">
+        <h1>Rahaa: <span id="raha">100</span>$</h1>
+        <h2>Panos:<span id="panos">0</span>$</h2>
+        <div id="kolikot">
+            <button class="coin-button" onclick="lisaaRahaa(1)">
+                <div class="reel" id="reel5">
+                    <img src="kolikko.jpg" alt="kolikko">
+                    <p>1$</p>
+                </div>
+            </button>
+            
+            <button class="coin-button" onclick="lisaaRahaa(2)">
+                <div class="reel" id="reel6">
+                    <img src="kolikko2.jpg" alt="kolikko">
+                    <p>2$</p>
+                </div>
+            </button>
+            
+            <button class="coin-button" onclick="lisaaRahaa(3)">
+                <div class="reel" id="reel7">
+                    <img src="kolikko3.jpg" alt="kolikko">
+                    <p>3$</p>
+                </div>
+            </button>
+           
+        </div>
+    </div>
+    
+    <div class="container2">
+        <h1>Hedelmäpeli</h1>
+        <div id="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel1"></div>
+                <button class="lukko" onclick="suljeLukko(1)">
+                    <div class="reel" id="reel8">
+                        <img src="avoinlukko.avif" alt="lukko">
+                    </div>
+                </button>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel2"></div>
+                <button class="lukko" onclick="suljeLukko(2)">
+                    <div class="reel" id="reel9">
+                        <img src="avoinlukko.avif" alt="lukko">
+                    </div>
+                </button>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel3"></div>
+                <button class="lukko" onclick="suljeLukko(3)">
+                    <div class="reel" id="reel10">
+                        <img src="avoinlukko.avif" alt="lukko">
+                    </div>
+                </button>
+            </div>
+            <div class="reel-container">
+                <div class="reel" id="reel4"></div>
+                <button class="lukko" onclick="suljeLukko(4)">
+                    <div class="reel" id="reel11">
+                        <img src="avoinlukko.avif" alt="lukko">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <button id="spin-button" onclick="pelaa()">Pelaa</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="hedelmapeli.js"></script>
+</body>
+</html>
