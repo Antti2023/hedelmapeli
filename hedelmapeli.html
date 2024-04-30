@@ -40,15 +40,15 @@
         <div id="slot-machine">
             <div class="reel-container">
                 <div class="reel" id="reel1"></div>
-                <button class="lukko" onclick="suljeLukko(1)">
-                    <div class="reel" id="reel8">
+                <button class="lukko" onclick="lukitseRulla(0)">
+                    <div class="reel" id="reel8" >
                         <img src="avoinlukko.avif" alt="lukko">
                     </div>
                 </button>
             </div>
             <div class="reel-container">
                 <div class="reel" id="reel2"></div>
-                <button class="lukko" onclick="suljeLukko(2)">
+                <button class="lukko" onclick="lukitseRulla(1)">
                     <div class="reel" id="reel9">
                         <img src="avoinlukko.avif" alt="lukko">
                     </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="reel-container">
                 <div class="reel" id="reel3"></div>
-                <button class="lukko" onclick="suljeLukko(3)">
+                <button class="lukko" onclick="lukitseRulla(2)">
                     <div class="reel" id="reel10">
                         <img src="avoinlukko.avif" alt="lukko">
                     </div>
@@ -64,14 +64,14 @@
             </div>
             <div class="reel-container">
                 <div class="reel" id="reel4"></div>
-                <button class="lukko" onclick="suljeLukko(4)">
+                <button class="lukko" onclick="lukitseRulla(3)">
                     <div class="reel" id="reel11">
                         <img src="avoinlukko.avif" alt="lukko">
                     </div>
                 </button>
             </div>
         </div>
-        <button id="spin-button" onclick="pelaa()">Pelaa</button>
+        <button id="spin-button">Pelaa</button>
         <div id="result"></div>
     </div>
 

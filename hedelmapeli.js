@@ -1,5 +1,5 @@
 let rullat = [];
-let lukitutRullat = [];
+let lukitutRullat = [1,0,0,0];
 let rahanMaara = 100;
 const minimipanos = 1;
 let panos = 0;
@@ -51,9 +51,19 @@ function asetaKuvat() {
 
 function paivitaKuvat() {
     for (let i = 0; i < rullat.length; i++) {
-        rullat[i] = arpomaaKuvio();
+        if (lukitutRullat[i] === 0) {
+            rullat[i] = arpomaaKuvio();
+        }
     }
     asetaKuvat();
+}
+
+function lukitseRulla(rulla) {
+    if (lukitutRullat[rulla] === 0) {
+        lukitutRullat[rulla] = 1;
+    } else {
+        lukitutRullat[rulla] = 0;
+    }
 }
 
 function tarkistaVoitto() {
@@ -91,6 +101,7 @@ function tarkistaRahanLoppuminen() {
 }
 
 const pelaaButton = document.getElementById("spin-button");
+
 pelaaButton.addEventListener("click", function() {
     if (rahanMaara <= 0) {
         alert("Rahasi ovat loppu! Peli päättyy.");
