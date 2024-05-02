@@ -1,5 +1,5 @@
 let rullat = [];
-let lukitutRullat = [1,0,0,0];
+let lukitutRullat = [0,0,0,0];
 let rahanMaara = 100;
 const minimipanos = 1;
 let panos = 0;
@@ -59,12 +59,16 @@ function paivitaKuvat() {
 }
 
 function lukitseRulla(rulla) {
+    const lukkoButton = document.getElementById(`reel${rulla+8}`); 
     if (lukitutRullat[rulla] === 0) {
         lukitutRullat[rulla] = 1;
+        lukkoButton.innerHTML = '<img src="lukittulukko.png" alt="lukko">'; 
     } else {
         lukitutRullat[rulla] = 0;
+        lukkoButton.innerHTML = '<img src="avoinlukko.avif" alt="lukko">'; 
     }
 }
+
 
 function tarkistaVoitto() {
     let voitto = false;
@@ -87,12 +91,19 @@ function voitto() {
             rahanMaara += voittoMaara;
             voitto.saatu = true; 
             paivitaRaha();
+           
+            nollaaLukitutRullat();
             return true;
         }
     }
     return false;
 }
-
+function nollaaLukitutRullat() {
+    for (let i = 0; i < lukitutRullat.length; i++) {
+        lukitutRullat[i] = 0; 
+        
+    }
+}
 function tarkistaRahanLoppuminen() {
     if (rahanMaara <= 0) {
         alert("Rahasi ovat loppu! Peli päättyy.");
