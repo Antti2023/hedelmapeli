@@ -1,6 +1,7 @@
 let rullat = [];
 let lukitutRullat = [0,0,0,0];
 let rahanMaara = 100;
+let saaLukita = false;
 const minimipanos = 1;
 let panos = 0;
 const voittoTaulukko = {
@@ -59,6 +60,10 @@ function paivitaKuvat() {
 }
 
 function lukitseRulla(rulla) {
+    if (!saaLukita) {
+        alert("Et voi lukita rullaa nyt.");
+        return;
+    }
     const lukkoButton = document.getElementById(`reel${rulla+8}`); 
     if (lukitutRullat[rulla] === 0) {
         lukitutRullat[rulla] = 1;
@@ -87,22 +92,20 @@ function tarkistaRahat() {
 function voitto() {
     if (tarkistaVoitto()) {
         const voittoMaara = panos * voittoTaulukko[rullat[0]];
-        if (!voitto.saatu) {
-            rahanMaara += voittoMaara;
-            voitto.saatu = true; 
-            paivitaRaha();
-            
-            
-            for (let i = 0; i < lukitutRullat.length; i++) {
-                if (lukitutRullat[i] === 1) {
-                    const lukkoButton = document.getElementById(`reel${i+8}`);
-                    lukkoButton.innerHTML = '<img src="avoinlukko.avif" alt="lukko">'; 
-                }
+        alert(`Voitit ${voittoMaara} euroa!`); 
+        rahanMaara += voittoMaara;
+        paivitaRaha();
+        
+        for (let i = 0; i < lukitutRullat.length; i++) {
+            if (lukitutRullat[i] === 1) {
+                const lukkoButton = document.getElementById(`reel${i+8}`);
+                lukkoButton.innerHTML = '<img src="avoinlukko.avif" alt="lukko">'; 
             }
-            
-            nollaaLukitutRullat();
-            return true;
         }
+        
+        nollaaLukitutRullat();
+        return true;
+        
     }
     return false;
 }
@@ -122,6 +125,10 @@ function tarkistaRahanLoppuminen() {
 const pelaaButton = document.getElementById("spin-button");
 
 pelaaButton.addEventListener("click", function() {
+    if (!saaLukita) {
+        saaLukita = true;
+    }
+
     if (rahanMaara <= 0) {
         alert("Rahasi ovat loppu! Peli päättyy.");
         pelaaButton.disabled = true; 
@@ -132,14 +139,11 @@ pelaaButton.addEventListener("click", function() {
         rahanMaara -= panos;
         paivitaRaha();
         paivitaKuvat();
-
-        setTimeout(function() {
-            if (voitto()) {
-                alert(`Voitit ${panos*6}$!`);
-            }
-            tarkistaMaksimiarvo();
-            tarkistaRahanLoppuminen();
-        }, 1000);
+        if (voitto()){
+            saaLukita = false;
+        }
+        tarkistaRahanLoppuminen();
+        
     } else {
         alert("Aseta panos ennen kuin pelaat!");
     }
