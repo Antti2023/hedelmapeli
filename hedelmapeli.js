@@ -91,7 +91,15 @@ function voitto() {
             rahanMaara += voittoMaara;
             voitto.saatu = true; 
             paivitaRaha();
-           
+            
+            
+            for (let i = 0; i < lukitutRullat.length; i++) {
+                if (lukitutRullat[i] === 1) {
+                    const lukkoButton = document.getElementById(`reel${i+8}`);
+                    lukkoButton.innerHTML = '<img src="avoinlukko.avif" alt="lukko">'; 
+                }
+            }
+            
             nollaaLukitutRullat();
             return true;
         }
